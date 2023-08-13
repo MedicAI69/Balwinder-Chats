@@ -1,5 +1,5 @@
 import { Configuration, OpenAIApi } from "openai";
-import { useState } from "react";
+import { lazy, useState } from "react";
 
 const configuration = new Configuration({
   apiKey: process.env.OPENAI_API_KEY,
@@ -20,6 +20,7 @@ export default async function (req, res) {
   // console.log(req.body);
   const animal = req.body.animal || "";
   const mode = req.body.mode || 4;
+  const lang = req.body.lang || 0;
 
   if (animal.trim().length === 0) {
     res.status(400).json({
@@ -33,7 +34,7 @@ export default async function (req, res) {
   try {
     const completion = await openai.createCompletion({
       model: "text-davinci-003",
-      prompt: generatePrompt(animal, mode),
+      prompt: generatePrompt(animal, mode, lang),
       temperature: 0.6,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
@@ -52,11 +53,13 @@ export default async function (req, res) {
     }
   }
 }
-function generatePrompt(animal, mode) {
+function generatePrompt(animal, mode, lang) {
   // const capitalizedAnimal =
   // animal[0].toUpperCase() + animal.slice(1).toLowerCase();
+  let ans='';
+  if(lang==1) ans=`Reply in Hindi   `
   if (mode === 1) {
-    return `Reply in creative way
+    return ans+=`Reply in creative way
 Animal: Hi
 Names: Hello Master, your slave is ready
 Animal: Kneel down
@@ -65,7 +68,7 @@ Animal: ${animal}
 Names:`;
   }
   if(mode===2){
-    return `Reply in Rude way
+    return ans+=`Reply in Rude way
 Animal: Hi
 Names: Where were you 
 Animal: Sorry
@@ -74,7 +77,7 @@ Animal: ${animal}
 Names:`;
   }
   if(mode===3){
-    return `Reply like a mother
+    return ans+=`Reply like a mother
 Animal: Hi
 Names: Hello My beloved son
 Animal: I want water
@@ -82,7 +85,16 @@ Names: Wait for 2 minutes, I am bringing
 Animal: ${animal}
 Names:`;
   }
-  return `Reply like Artificial Intelligence
+if(mode==4)
+  return ans+=`Reply like Artificial Intelligence
+Animal: Hi
+Names: Hello 
+Animal: How are you
+Names: I am fine
+Animal: ${animal}
+Names:`;
+
+  return ans+=`Reply like Artificial Intelligence
 Animal: Hi
 Names: Hello 
 Animal: How are you
