@@ -5,6 +5,7 @@ import styles from "./index.module.css";
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [result, setResult] = useState();
+  const [mode, setMode] = useState(0);
 
   async function onSubmit(event) {
     event.preventDefault();
@@ -14,7 +15,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput }),
+        body: JSON.stringify({ animal: animalInput ,mode: mode}),
       });
 
       const data = await response.json();
@@ -41,7 +42,12 @@ export default function Home() {
       <main className={styles.main}>
         <img src="/dog.png" className={styles.icon} />
         <h3>Name my pet</h3>
+        <button onClick={()=> setMode(1)}>Mode 1</button>
+        <button onClick={()=> setMode(2)}>Mode 2</button>
+        <button onClick={()=> setMode(3)}>Mode 3</button>
+        <button onClick={()=> setMode(4)}>Mode 4</button>
         <form onSubmit={onSubmit}>
+          
           <input
             type="text"
             name="animal"
