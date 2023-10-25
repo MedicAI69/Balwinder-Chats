@@ -1,8 +1,5 @@
-import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
-import { Html } from "next/document";
-// import './style.css'
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
   const [result, setResult] = useState("");
@@ -33,7 +30,7 @@ export default function Home() {
     margin: '3px',
   };
   const buttonStylee = {
-    
+
     padding: '10px 20px',
     fontSize: '16px',
     backgroundColor: bge,
@@ -48,7 +45,7 @@ export default function Home() {
 
 
   const buttonStyle = {
-    
+
     padding: '10px 20px',
     fontSize: '16px',
     backgroundColor: 'blue',
@@ -61,7 +58,7 @@ export default function Home() {
     margin: '3px',
   };
   const activebtn = {
-    
+
     padding: '10px 20px',
     fontSize: '16px',
     backgroundColor: 'aqua',
@@ -72,28 +69,6 @@ export default function Home() {
     cursor: 'pointer',
     transition: 'background-color 0.3s ease',
     margin: '3px',
-  };
-
-  const msg = {
-    display: 'inline-block',
-    width:'1000px',
-    height:'400px',
-    border: "1px solid #ccc",
-    padding: "8px",
-    clear: 'both',
-    overflowY: 'scroll',
-  };
-  const me = {
-    padding: "10px 20px",
-    borderRadius: "4px",
-    backgroundColor: 'aqua',
-    float: 'right',
-  };
-  const ai = {
-    padding: "4px 8px",
-    borderRadius: "4px",
-    backgroundColor:'aquamarine',
-    float: 'left',
   };
 
 
@@ -107,7 +82,7 @@ export default function Home() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ animal: animalInput ,mode: mode , lang : lang}),
+        body: JSON.stringify({ animal: animalInput, mode: mode, lang: lang }),
       });
 
       const data = await response.json();
@@ -116,19 +91,19 @@ export default function Home() {
       }
 
       // setResult(result + data.result);
-      let msg =  document.getElementById('msg');
+      let msg = document.getElementById('msg');
       let newMsgMe = document.createElement('me');
-      newMsgMe.textContent=animalInput;
+      newMsgMe.textContent = animalInput;
       msg.appendChild(newMsgMe);
-      msg.innerHTML+='<br/><br/>';
+      msg.innerHTML += '<br/><br/>';
       // newMsgMe.style=me;
       // setTimeout(() => console.log('Initial timeout!'), 100);
       let newMsgAi = document.createElement('ai');
-      newMsgAi.textContent=data.result;
+      newMsgAi.textContent = data.result;
       msg.appendChild(newMsgAi);
-      msg.innerHTML+='<br/><br/>';
+      msg.innerHTML += '<br/><br/>';
       setAnimalInput("");
-    } catch(error) {
+    } catch (error) {
       // Consider implementing your own error handling logic here
       console.error(error);
       alert(error.message);
@@ -138,14 +113,15 @@ export default function Home() {
 
 
   return (
-    <div className="container">
+    <div className={styles.fullScreen}>
       <main className={styles.main}>
-        <h3>Balwinder Chats</h3>
-        <div>
+        <div className={styles.title}>
+        <div className={styles.logo}></div>
+          <h1>Balwinder Chats</h1>
+        </div>
 
-          {/* lang */}
-          <button style={buttonStyleh} onClick={()=> {
-            
+        <div>
+          <button style={buttonStyleh} onClick={() => {
             setLang(1);
             setbgh('red');
             setbge('brown');
@@ -153,7 +129,7 @@ export default function Home() {
             Hindi
           </button>
 
-          <button style={buttonStylee} onClick={()=> {
+          <button style={buttonStylee} onClick={() => {
             setLang(0);
             setbge('red');
             setbgh('brown');
@@ -165,64 +141,63 @@ export default function Home() {
 
         {/* Navbar */}
         <div className="nav">
-        <button style={isActive1 ? activebtn : buttonStyle} onClick={()=> {
-          setMode(1);
-          setActive1(true);
-          setActive2(false);
-          setActive3(false);
-          setActive4(false);
-          setActive5(false);
-        }}>Master-Slave</button>
-        <button style={isActive2 ? activebtn : buttonStyle} onClick={()=> {
-          setMode(2);
-          setActive1(false);
-          setActive2(true);
-          setActive3(false);
-          setActive4(false);
-          setActive5(false);
-        }}>Rude</button>
-        <button style={isActive3 ? activebtn : buttonStyle} onClick={()=> {
-          setMode(3);
-          setActive1(false);
-          setActive2(false);
-          setActive3(true);
-          setActive4(false);
-          setActive5(false);
-        }}>Loving</button>
-        <button style={isActive4 ? activebtn : buttonStyle} onClick={()=> {
-          setMode(4);
-          setActive1(false);
-          setActive2(false);
-          setActive3(false);
-          setActive4(true);
-          setActive5(false);
-        }}>Dank</button>
-        <button style={isActive5 ? activebtn : buttonStyle} onClick={()=> {
-          setMode(5);
-          setActive1(false);
-          setActive2(false);
-          setActive3(false);
-          setActive4(false);
-          setActive5(true);
-        }}>Defult</button>
+          <button style={isActive1 ? activebtn : buttonStyle} onClick={() => {
+            setMode(1);
+            setActive1(true);
+            setActive2(false);
+            setActive3(false);
+            setActive4(false);
+            setActive5(false);
+          }}>Master-Slave</button>
+          <button style={isActive2 ? activebtn : buttonStyle} onClick={() => {
+            setMode(2);
+            setActive1(false);
+            setActive2(true);
+            setActive3(false);
+            setActive4(false);
+            setActive5(false);
+          }}>Rude</button>
+          <button style={isActive3 ? activebtn : buttonStyle} onClick={() => {
+            setMode(3);
+            setActive1(false);
+            setActive2(false);
+            setActive3(true);
+            setActive4(false);
+            setActive5(false);
+          }}>Loving</button>
+          <button style={isActive4 ? activebtn : buttonStyle} onClick={() => {
+            setMode(4);
+            setActive1(false);
+            setActive2(false);
+            setActive3(false);
+            setActive4(true);
+            setActive5(false);
+          }}>Dank</button>
+          <button style={isActive5 ? activebtn : buttonStyle} onClick={() => {
+            setMode(5);
+            setActive1(false);
+            setActive2(false);
+            setActive3(false);
+            setActive4(false);
+            setActive5(true);
+          }}>Defult</button>
         </div>
 
-
-        <div id="msg" className={styles.result} style={msg}>{result}</div>
-        <br/>
-        <br/>
-        <form onSubmit={onSubmit}>
-          <input
-            type="text"
-            name="animal"
-            placeholder="Ask me anything...."
-            value={animalInput}
-            onChange={(e) => setAnimalInput(e.target.value)}
-          />
-          <input type="submit" value="Generate" />
-        </form>
-
-
+        <div className={styles.container}>
+          <div id="msg" className={styles.result}>
+            {result}
+          </div>
+          <form onSubmit={onSubmit}>
+            <input
+              type="text"
+              name="animal"
+              placeholder="Ask me anything...."
+              value={animalInput}
+              onChange={(e) => setAnimalInput(e.target.value)}
+            />
+            <input type="submit" value="" />
+          </form>
+        </div>
       </main>
     </div>
   );
