@@ -119,16 +119,21 @@
 
 .result {
   clear: both;
-  overflow-y: scroll;
+  overflow-y:scroll;
+  scrollbar-width: none;
   width: full;
-  scrollbar-width: 5px;
   margin-bottom: 5px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+.result::-webkit-scrollbar {
+  display: none;
 }
 .result me{
   padding: 5px 10px;
   margin-bottom: 3px;
   border-radius: 4px;
-  background-color: aqua;
+  background-color: red;
   float: right;
   max-width: 250px;
 }
@@ -136,7 +141,7 @@
   padding: 5px 10px;
   margin-bottom: 3px;
   border-radius: 4px;
-  background-color: rgb(0, 255, 60);
+  background-color: aqua;
   float: left;
   max-width: 250px;
 }
