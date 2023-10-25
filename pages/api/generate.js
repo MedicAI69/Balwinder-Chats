@@ -36,6 +36,7 @@ export default async function (req, res) {
       model: "text-davinci-003",
       prompt: generatePrompt(animal, mode, lang),
       temperature: 0.6,
+      max_tokens: 100,
     });
     res.status(200).json({ result: completion.data.choices[0].text });
   } catch (error) {
@@ -56,49 +57,49 @@ export default async function (req, res) {
 function generatePrompt(animal, mode, lang) {
   // const capitalizedAnimal =
   // animal[0].toUpperCase() + animal.slice(1).toLowerCase();
-  let ans='';
-  if(lang==1) ans=`Reply in Hindi   `
+  let ans = '';
+  if (lang == 1) ans = `Reply in Hindi   `
   if (mode === 1) {
-    return ans+=`Reply in creative way
-Animal: Hi
-Names: Hello Master, your slave is ready
-Animal: Kneel down
-Names: As your wish!
-Animal: ${animal}
-Names:`;
+    return ans += `Reply in creative way
+Me: Hi
+Ai: Hello Master, your slave is ready
+Me: Kneel down
+Ai: As your wish!
+Me: ${animal}
+Ai:`;
   }
-  if(mode===2){
-    return ans+=`Reply in Rude way
-Animal: Hi
-Names: Where were you 
-Animal: Sorry
-Names: You heve no right of mercy
-Animal: ${animal}
-Names:`;
+  if (mode === 2) {
+    return ans += `Reply in Rude way
+Me: Hi
+Ai: Where were you 
+Me: Sorry
+Ai: You heve no right of mercy
+Me: ${animal}
+Ai:`;
   }
-  if(mode===3){
-    return ans+=`Reply like a mother
-Animal: Hi
-Names: Hello My beloved son
-Animal: I want water
-Names: Wait for 2 minutes, I am bringing
-Animal: ${animal}
-Names:`;
+  if (mode === 3) {
+    return ans += `Reply like a mother
+Me: Hi
+Ai: Hello My beloved son
+Me: I want water
+Ai: Wait for 2 minutes, I am bringing
+Me: ${animal}
+Ai:`;
   }
-if(mode==4)
-  return ans+=`Reply like Artificial Intelligence
-Animal: Hi
-Names: Hello 
-Animal: How are you
-Names: I am fine
-Animal: ${animal}
-Names:`;
-
-  return ans+=`Reply like Artificial Intelligence
-Animal: Hi
-Names: Hello 
-Animal: How are you
-Names: I am fine
-Animal: ${animal}
-Names:`;
+  if (mode == 4)
+    return ans += `Reply like Dank person
+Me: Hi
+Ai: Hello 
+Me: what's biggest animal on earth
+Ai: Yo mama
+Me: ${animal}
+Ai:`;
+  if (mode == 5)
+    return ans += `Reply like Artificial Intelligence
+Me: Hi
+Ai: Hello 
+Me: How are you
+Ai: I am fine
+Me: ${animal}
+Ai:`;
 }

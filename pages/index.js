@@ -1,9 +1,11 @@
 import Head from "next/head";
 import { useState } from "react";
 import styles from "./index.module.css";
+import { Html } from "next/document";
+// import './style.css'
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
-  const [result, setResult] = useState();
+  const [result, setResult] = useState("");
   const [mode, setMode] = useState(0);
   const [lang, setLang] = useState(0);
   const [bgh, setbgh] = useState('brown');
@@ -12,6 +14,7 @@ export default function Home() {
   const [isActive2, setActive2] = useState(false);
   const [isActive3, setActive3] = useState(false);
   const [isActive4, setActive4] = useState(false);
+  const [isActive5, setActive5] = useState(false);
 
 
 
@@ -71,6 +74,27 @@ export default function Home() {
     margin: '3px',
   };
 
+  const msg = {
+    display: 'inline-block',
+    width:'1000px',
+    height:'400px',
+    border: "1px solid #ccc",
+    padding: "8px",
+    clear: 'both',
+    overflowY: 'scroll',
+  };
+  const me = {
+    padding: "10px 20px",
+    borderRadius: "4px",
+    backgroundColor: 'aqua',
+    float: 'right',
+  };
+  const ai = {
+    padding: "4px 8px",
+    borderRadius: "4px",
+    backgroundColor:'aquamarine',
+    float: 'left',
+  };
 
 
   //onsubmit ki bachodi
@@ -91,7 +115,18 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
 
-      setResult(data.result);
+      // setResult(result + data.result);
+      let msg =  document.getElementById('msg');
+      let newMsgMe = document.createElement('me');
+      newMsgMe.textContent=animalInput;
+      msg.appendChild(newMsgMe);
+      msg.innerHTML+='<br/><br/>';
+      // newMsgMe.style=me;
+      // setTimeout(() => console.log('Initial timeout!'), 100);
+      let newMsgAi = document.createElement('ai');
+      newMsgAi.textContent=data.result;
+      msg.appendChild(newMsgAi);
+      msg.innerHTML+='<br/><br/>';
       setAnimalInput("");
     } catch(error) {
       // Consider implementing your own error handling logic here
@@ -103,14 +138,7 @@ export default function Home() {
 
 
   return (
-    <div>
-      <Head>
-        <title>OpenAI Quickstart</title>
-        <link rel="icon" href="/dog.png" />
-      </Head>
-
-
-
+    <div className="container">
       <main className={styles.main}>
         <h3>Balwinder Chats</h3>
         <div>
@@ -143,6 +171,7 @@ export default function Home() {
           setActive2(false);
           setActive3(false);
           setActive4(false);
+          setActive5(false);
         }}>Master-Slave</button>
         <button style={isActive2 ? activebtn : buttonStyle} onClick={()=> {
           setMode(2);
@@ -150,6 +179,7 @@ export default function Home() {
           setActive2(true);
           setActive3(false);
           setActive4(false);
+          setActive5(false);
         }}>Rude</button>
         <button style={isActive3 ? activebtn : buttonStyle} onClick={()=> {
           setMode(3);
@@ -157,6 +187,7 @@ export default function Home() {
           setActive2(false);
           setActive3(true);
           setActive4(false);
+          setActive5(false);
         }}>Loving</button>
         <button style={isActive4 ? activebtn : buttonStyle} onClick={()=> {
           setMode(4);
@@ -164,23 +195,34 @@ export default function Home() {
           setActive2(false);
           setActive3(false);
           setActive4(true);
+          setActive5(false);
+        }}>Dank</button>
+        <button style={isActive5 ? activebtn : buttonStyle} onClick={()=> {
+          setMode(5);
+          setActive1(false);
+          setActive2(false);
+          setActive3(false);
+          setActive4(false);
+          setActive5(true);
         }}>Defult</button>
         </div>
 
 
-        
+        <div id="msg" className={styles.result} style={msg}>{result}</div>
+        <br/>
+        <br/>
         <form onSubmit={onSubmit}>
-          
           <input
             type="text"
             name="animal"
-            placeholder="Enter an animal"
+            placeholder="Ask me anything...."
             value={animalInput}
             onChange={(e) => setAnimalInput(e.target.value)}
           />
-          <input type="submit" value="Generate names" />
+          <input type="submit" value="Generate" />
         </form>
-        <div className={styles.result}>{result}</div>
+
+
       </main>
     </div>
   );

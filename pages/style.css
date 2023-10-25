@@ -1,0 +1,13 @@
+.me{
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: aqua;
+    float: right;
+  }
+  
+  .ai{
+    padding: 10px 20px;
+    border-radius: 4px;
+    background-color: aqua;
+    float: left;
+  }
