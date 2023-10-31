@@ -1,4 +1,4 @@
-import { useState , useRef , useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import styles from "./index.module.css";
 export default function Home() {
   const [animalInput, setAnimalInput] = useState("");
@@ -115,14 +115,14 @@ export default function Home() {
   const msgbox = useRef();
   useEffect(() => {
     msgbox.scrollTop = msgbox.scrollHeight;
-  },[]);
+  }, []);
 
 
   return (
     <div className={styles.fullScreen}>
       <main className={styles.main}>
         <div className={styles.title}>
-        <div className={styles.logo}></div>
+          <div className={styles.logo}></div>
           <h1>Balwinder Chats</h1>
         </div>
 
@@ -191,36 +191,6 @@ export default function Home() {
 
         <div className={styles.container}>
           <div id="msg" className={styles.result} ref={msgbox}>
-            <me>HI</me>
-            <br></br>
-            <br></br>
-            <ai>ai</ai>
-            <br></br>
-            <br></br>
-            <me>me</me>
-            <br></br>
-            <br></br>
-            <ai>ai</ai>
-            <br></br>
-            <br></br>
-            <me>HI</me>
-            <br></br>
-            <br></br>
-            <me>HI</me>
-            <br></br>
-            <br></br>
-            <ai>ai</ai>
-            <br></br>
-            <br></br>
-            <me>me</me>
-            <br></br>
-            <br></br>
-            <ai>ai</ai>
-            <br></br>
-            <br></br>
-            <me>HI</me>
-            <br></br>
-            <br></br>
             {result}
           </div>
           <form onSubmit={onSubmit}>
