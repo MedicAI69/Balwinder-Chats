@@ -5,50 +5,21 @@ export default function Home() {
   const [result, setResult] = useState("");
   const [mode, setMode] = useState(0);
   const [lang, setLang] = useState(0);
-  const [bgh, setbgh] = useState('brown');
-  const [bge, setbge] = useState('brown');
   const [isActive1, setActive1] = useState(false);
   const [isActive2, setActive2] = useState(false);
   const [isActive3, setActive3] = useState(false);
   const [isActive4, setActive4] = useState(false);
-  const [isActive5, setActive5] = useState(false);
+  const [isActive5, setActive5] = useState(true);
 
 
 
   //CSS
-  const buttonStyleh = {
-
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: bgh,
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '5px',
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-    margin: '3px',
-  };
-  const buttonStylee = {
-
-    padding: '10px 20px',
-    fontSize: '16px',
-    backgroundColor: bge,
-    color: '#ffffff',
-    border: 'none',
-    borderRadius: '5px',
-    boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
-    cursor: 'pointer',
-    transition: 'background-color 0.3s ease',
-    margin: '3px',
-  };
-
 
   const buttonStyle = {
 
     padding: '10px 20px',
     fontSize: '16px',
-    backgroundColor: 'blue',
+    backgroundColor: '#E4BAD4',
     color: '#ffffff',
     border: 'none',
     borderRadius: '5px',
@@ -61,8 +32,8 @@ export default function Home() {
 
     padding: '10px 20px',
     fontSize: '16px',
-    backgroundColor: 'aqua',
-    color: '#ffffff',
+    backgroundColor: '#F6DFEB',
+    color: '#000000',
     border: 'none',
     borderRadius: '5px',
     boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
@@ -123,22 +94,18 @@ export default function Home() {
       <main className={styles.main}>
         <div className={styles.title}>
           <div className={styles.logo}></div>
-          <h1>Balwinder Chats</h1>
+          <h1>BALWINDER CHATS</h1>
         </div>
 
         <div>
-          <button style={buttonStyleh} onClick={() => {
+          <button style={lang ? activebtn : buttonStyle} onClick={() => {
             setLang(1);
-            setbgh('red');
-            setbge('brown');
           }}>
             Hindi
           </button>
 
-          <button style={buttonStylee} onClick={() => {
+          <button style={!lang ? activebtn : buttonStyle} onClick={() => {
             setLang(0);
-            setbge('red');
-            setbgh('brown');
           }}>
             English
           </button>
@@ -191,7 +158,10 @@ export default function Home() {
 
         <div className={styles.container}>
           <div id="msg" className={styles.result} ref={msgbox}>
+            <me>hi</me>
             {result}
+            <br></br>
+            <ai>hii</ai>
           </div>
           <form onSubmit={onSubmit}>
             <input

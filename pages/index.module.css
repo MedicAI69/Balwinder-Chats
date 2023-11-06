@@ -14,17 +14,21 @@
   font-style: normal;
 }
 
-
+/* bg:#CAF7E3
+sbg:#EDFFEC
+text:#F6DFEB
+text2:#E4BAD4 */
 
 .fullScreen{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  height: 98vh;
-  background-image: url(../public/download.gif);
+  height:100vh;
+  background-color: #CAF7E3;
   background-size:cover;
   background-repeat: no-repeat;
+  margin: -8px;
 }
 .main,
 .main input {
@@ -37,17 +41,21 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  border-radius: 4px;
+  background-color: #EDFFEC;
+  box-shadow: 0 0 800px #E4BAD4;
 }
 .main .icon {
   width: 34px;
 }
 .main h1 {
   font-family: "ColfaxAI", Helvetica, sans-serif;
-  font-size: 60px;
+  font-size: 50px;
   line-height: 40px;
   font-weight: bold;
-  color: rgb(255, 255, 255);
-  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; 
+  color: #F6DFEB;
+  text-shadow: 0 0 6px #784d4d, 0 0 5px #5a5a7e; 
 }
 .title{
   display: flex;
@@ -72,9 +80,9 @@
 }
 .main input[type="text"] {
   padding: 12px 16px;
-  border: 1px solid #ff0000;
+  border: 1px solid #E4BAD4;
   border-radius: 4px;
-  outline-color: #ff0000;
+  outline-color: #E4BAD4;
   width: 380px;
 }
 .main ::placeholder {
@@ -83,7 +91,7 @@
 }
 .main input[type="submit"] {
   color: #fff;
-  background-color: #ff0000;
+  background-color: #E4BAD4;
   border: none;
   border-radius: 4px;
   font-size:xx-large;
@@ -115,6 +123,8 @@
   border: 1px solid #ccc;
   padding: 2px;
   margin-top: 10px;
+  box-shadow: 0 0 10px rgb(111, 129, 197);
+  border-radius: 4px;
 }
 
 .result {
@@ -133,7 +143,7 @@
   padding: 5px 10px;
   margin-bottom: 3px;
   border-radius: 4px;
-  background-color: red;
+  background-color: #EDFFEC;
   float: right;
   max-width: 250px;
 }
@@ -141,7 +151,7 @@
   padding: 5px 10px;
   margin-bottom: 3px;
   border-radius: 4px;
-  background-color: aqua;
+  background-color: #CAF7E3;
   float: left;
   max-width: 250px;
 }
