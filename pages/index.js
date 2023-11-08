@@ -4,6 +4,9 @@ export default function Home() {
   const [Input, setInput] = useState("");
   const [mode, setMode] = useState(5);
   const [lang, setLang] = useState(0);
+  useEffect(()=>{
+
+  },[lang,mode])
 
   //onsubmit ki bachodi
   async function onSubmit(event) {
@@ -22,9 +25,11 @@ export default function Home() {
         throw data.error || new Error(`Request failed with status ${response.status}`);
       }
       let msg = document.getElementById('msg');
+      let con = document.createElement('div');
       let newMsgMe = document.createElement('me');
       newMsgMe.textContent = Input;
-      msg.appendChild(newMsgMe);
+      con.appendChild(newMsgMe);
+      msg.appendChild(con);
       msg.innerHTML += '<br/><br/>';
       let newMsgAi = document.createElement('ai');
       newMsgAi.textContent = data.result;
@@ -33,9 +38,11 @@ export default function Home() {
       setInput("");
     } catch (error) {
       let msg = document.getElementById('msg');
+      let con = document.createElement('div');
       let newMsgMe = document.createElement('me');
       newMsgMe.textContent = Input;
-      msg.appendChild(newMsgMe);
+      con.appendChild(newMsgMe);
+      msg.appendChild(con);
       msg.innerHTML += '<br/><br/>';
       let newMsgAi = document.createElement('ai');
       newMsgAi.textContent = `Unable to process your request. Please try again later.
@@ -61,58 +68,72 @@ export default function Home() {
           <div className={styles.logo}></div>
           <h1>BALWINDER CHATS</h1>
         </div>
+        <div className={styles.content}>
+          <div className={styles.Rside}>
+            <div className="langSelector">
+              <p>Select Language</p>
+              <button
+                className={lang ? styles.activebtn : styles.buttonStyle}
+                onClick={() => {
+                  setLang(1);
+                }}>
+                Hindi
+              </button>
 
-        <div>
-          <button className={lang ? styles.activebtn : styles.buttonStyle} onClick={() => {
-            setLang(1);
-          }}>
-            Hindi
-          </button>
-
-          <button className={!lang ? styles.activebtn : styles.buttonStyle} onClick={() => {
-            setLang(0);
-          }}>
-            English
-          </button>
-        </div>
-
-
-        {/* Navbar */}
-        <div className="nav">
-          <button className={mode == 1 ? styles.activebtn : styles.buttonStyle} onClick={() => {
-            setMode(1);
-          }}>Master-Slave</button>
-          <button className={mode == 2 ? styles.activebtn : styles.buttonStyle} onClick={() => {
-            setMode(2);
-          }}>Rude</button>
-          <button className={mode == 3 ? styles.activebtn : styles.buttonStyle} onClick={() => {
-            setMode(3);
-          }}>Loving</button>
-          <button className={mode == 4 ? styles.activebtn : styles.buttonStyle} onClick={() => {
-            setMode(4);
-          }}>Dank</button>
-          <button className={mode == 5 ? styles.activebtn : styles.buttonStyle} onClick={() => {
-            setMode(5);
-          }}>Defult</button>
-        </div>
-
-        <div className={styles.container}>
-          <div id="msg" className={styles.result} ref={msgbox}>
-            {/* <me>hi</me>
-            <br></br>
-            <ai>hii</ai> */}
+              <button
+                className={!lang ? styles.activebtn : styles.buttonStyle}
+                onClick={() => {
+                  setLang(0);
+                }}>
+                English
+              </button>
+            </div>
+            {/* Navbar */}
+            <div className={styles.nav}>
+              <p>Select Mode</p>
+              <button
+                className={mode == 1 ? styles.activebtn : styles.buttonStyle}
+                onClick={() => {
+                  setMode(1);
+                }}>Master-Slave</button>
+              <button
+                className={mode == 2 ? styles.activebtn : styles.buttonStyle}
+                onClick={() => {
+                  setMode(2);
+                }}>Rude</button>
+              <button
+                className={mode == 3 ? styles.activebtn : styles.buttonStyle}
+                onClick={() => {
+                  setMode(3);
+                }}>Loving</button>
+              <button
+                className={mode == 4 ? styles.activebtn : styles.buttonStyle}
+                onClick={() => {
+                  setMode(4);
+                }}>Dank</button>
+              <button
+                className={mode == 5 ? styles.activebtn : styles.buttonStyle}
+                onClick={() => {
+                  setMode(5);
+                }}>Defult</button>
+            </div>
           </div>
-          <form onSubmit={onSubmit}>
-            <input
-              type="text"
-              name="animal"
-              placeholder="Ask me anything...."
-              value={Input}
-              onChange={(e) => setInput(e.target.value)}
-            />
-            <input type="submit" value="" />
-          </form>
+          <div className={styles.container}>
+            <div id="msg" className={styles.result} ref={msgbox}>
+            </div>
+            <form onSubmit={onSubmit}>
+              <input
+                type="text"
+                name="animal"
+                placeholder="Ask me anything...."
+                value={Input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+              <input type="submit" value="" />
+            </form>
+          </div>
         </div>
+
       </main>
     </div>
   );

@@ -44,7 +44,7 @@ stext:#E4BAD4
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  border:solid #000000;
   border-radius: 4px;
   background-color: #EDFFEC;
   box-shadow: 0 0 800px #E4BAD4;
@@ -109,6 +109,26 @@ stext:#E4BAD4
   font-weight: bold;
   margin-top: 4px;
 }
+.content{
+  display: flex;
+  flex-direction: row;
+  width: full;
+}
+.Rside {
+  display: flex;
+  flex-direction: column;
+  background-color: #CAF7E3;
+  border: solid #353740;
+}
+.Rside p{
+  font-size: large;
+  font-family: "ColfaxAI", Helvetica, sans-serif;
+  color: #F6DFEB;
+  text-shadow: 0 0 1px #784d4d, 0 0 1px #5a5a7e;
+  background-color: #000000;
+  padding: 2px;
+  text-align: center;
+}
 
 .nav {
   display: flex;
@@ -123,11 +143,8 @@ stext:#E4BAD4
   background-repeat: no-repeat;
   width: 500px;
   height: 400px;
-  border: 1px solid #ccc;
+  border: solid #353740;
   padding: 2px;
-  margin-top: 10px;
-  box-shadow: 0 0 10px rgb(111, 129, 197);
-  border-radius: 4px;
 }
 
 .result {
@@ -142,6 +159,11 @@ stext:#E4BAD4
 }
 .result::-webkit-scrollbar {
   display: none;
+}
+.result div{
+  width: 250px;
+  float: right;
+  max-width: 250px;
 }
 .result me{
   padding: 5px 10px;
