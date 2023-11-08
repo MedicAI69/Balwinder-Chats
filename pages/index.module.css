@@ -14,10 +14,13 @@
   font-style: normal;
 }
 
-/* bg:#CAF7E3
+/* 
+bg:#CAF7E3
 sbg:#EDFFEC
+tbg:#36393F
 text:#F6DFEB
-text2:#E4BAD4 */
+stext:#E4BAD4 
+*/
 
 .fullScreen{
   display: flex;
@@ -128,6 +131,7 @@ text2:#E4BAD4 */
 }
 
 .result {
+  display:inline-block;
   clear: both;
   overflow-y:scroll;
   scrollbar-width: none;
@@ -154,4 +158,31 @@ text2:#E4BAD4 */
   background-color: #CAF7E3;
   float: left;
   max-width: 250px;
+}
+
+
+.buttonStyle {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #E4BAD4;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 3px;
+}
+
+.activebtn {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #F6DFEB;
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 3px;
 }
