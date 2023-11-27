@@ -1,7 +1,8 @@
 # Balwinder Chats
 
-https://balwinderchats.netlify.app
-![Bc](https://github.com/MedicAI69/Balwinder-Chats/assets/113186420/65e6ee95-8d51-4975-aa27-40142c890bcf)
+LINK :-  https://balwinderchats.netlify.app
+
+![Screenshot 2023-11-28 015959](https://github.com/MedicAI69/Balwinder-Chats/assets/113186420/e54944ec-93c3-4265-b747-bd384fb1d017)
 
 ## Setup
 
